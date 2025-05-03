@@ -29,10 +29,10 @@ export interface TodoListProps {
   setEditEmoji: (emoji: string) => void;
   handleEditTodo: (todo: TodoItem) => void;
   cancelEditing: () => void;
-  // Add subtask handlers
   onToggleSubtask: (todoId: string, subtaskId: string) => void;
   onDeleteSubtask: (todoId: string, subtaskId: string) => void;
   onEditSubtask: (todoId: string, subtaskId: string, newText: string) => void;
+  onGenerateSubtasks: (todoId: string, count?: number) => void;
 }
 
 export interface FaqContentProps {

@@ -489,7 +489,14 @@ export default function Todo() {
       })
     );
   };
-  // End Subtask Management Functions
+
+  const generateSubtasks = (todoId: string, count?: number) => {
+    handleAction(
+      `Generate ${count ?? 10} subtasks for todo "${
+        todos.find((todo) => todo.id === todoId)?.text
+      }"`
+    );
+  };
 
   const startEditing = (id: string, text: string, emoji?: string) => {
     setEditingTodoId(id);
@@ -647,10 +654,10 @@ export default function Todo() {
               setEditEmoji={setEditEmoji}
               handleEditTodo={handleEditTodo}
               cancelEditing={cancelEditing}
-              // Pass subtask handlers
               onToggleSubtask={toggleSubtask}
               onDeleteSubtask={deleteSubtask}
               onEditSubtask={handleEditSubtask}
+              onGenerateSubtasks={generateSubtasks}
             />
           )}
         </Suspense>

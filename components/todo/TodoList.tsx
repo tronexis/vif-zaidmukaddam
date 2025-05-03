@@ -1,7 +1,14 @@
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { X, PencilSimple, Check, Smiley, Clock } from "@phosphor-icons/react";
+import {
+  X,
+  PencilSimple,
+  Check,
+  Smiley,
+  Clock,
+  Sparkle,
+} from "@phosphor-icons/react";
 import { CircleCheckbox } from "./CircleCheckbox";
 import { CircularProgress } from "./CircularProgress";
 import { TodoListProps } from "@/types";
@@ -35,6 +42,7 @@ export function TodoList({
   onToggleSubtask,
   onDeleteSubtask,
   onEditSubtask,
+  onGenerateSubtasks,
 }: TodoListProps) {
   // Create a reference for the edit input
   const editInputRef = useRef<HTMLInputElement>(null);
@@ -283,6 +291,23 @@ export function TodoList({
                   }}
                 >
                   <PencilSimple className="w-4 h-4" weight="bold" />
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className={cn(
+                    "h-7 w-7 text-muted-foreground hover:text-foreground",
+                    isMobile
+                      ? "opacity-100"
+                      : "opacity-0 group-hover:opacity-100 transition-opacity"
+                  )}
+                  onClick={(e: React.MouseEvent) => {
+                    e.stopPropagation();
+                    // Generate AI-powered subtasks based on the todo text
+                    onGenerateSubtasks(todo.id);
+                  }}
+                >
+                  <Sparkle className="w-4 h-4" weight="bold" />
                 </Button>
                 <Button
                   variant="ghost"
