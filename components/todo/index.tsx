@@ -611,7 +611,7 @@ export default function Todo() {
               />
             </PopoverContent>
           </Popover>
-          <CircularProgress progress={progress} />
+          <CircularProgress progress={progress} showEmoji showValue />
         </div>
         <div className="!ml-1.5 text-sm text-muted-foreground flex items-center gap-1">
           <span>{remainingCount} To Dos</span>

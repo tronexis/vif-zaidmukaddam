@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { X, PencilSimple, Check, Smiley, Clock } from "@phosphor-icons/react";
 import { CircleCheckbox } from "./CircleCheckbox";
+import { CircularProgress } from "./CircularProgress";
 import { TodoListProps } from "@/types";
 import { useRef, useCallback, useState, useEffect } from "react";
 import {
@@ -299,6 +300,17 @@ export function TodoList({
                 >
                   <X className="w-4 h-4" weight="bold" />
                 </Button>
+                {todo.subtasks && todo.subtasks.length > 0 && (
+                  <CircularProgress
+                    progress={
+                      (todo.subtasks.filter((subtask) => subtask.completed)
+                        .length *
+                        100) /
+                      todo.subtasks.length
+                    }
+                    size={18}
+                  />
+                )}
               </>
             )}
           </div>

@@ -13,6 +13,8 @@ export type SortOption = "newest" | "oldest" | "alphabetical" | "completed";
 export interface CircularProgressProps {
   progress: number;
   size?: number;
+  showEmoji?: boolean;
+  showValue?: boolean;
 }
 
 export interface TodoListProps {
