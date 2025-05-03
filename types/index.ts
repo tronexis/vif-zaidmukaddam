@@ -5,6 +5,7 @@ export interface TodoItem {
   emoji?: string;
   date: Date;
   time?: string; // Optional time in HH:mm format
+  subtasks?: SubtaskItem[]; // Add subtasks array
 }
 
 export type SortOption = "newest" | "oldest" | "alphabetical" | "completed";
@@ -26,6 +27,10 @@ export interface TodoListProps {
   setEditEmoji: (emoji: string) => void;
   handleEditTodo: (todo: TodoItem) => void;
   cancelEditing: () => void;
+  // Add subtask handlers
+  onToggleSubtask: (todoId: string, subtaskId: string) => void;
+  onDeleteSubtask: (todoId: string, subtaskId: string) => void;
+  onEditSubtask: (todoId: string, subtaskId: string, newText: string) => void;
 }
 
 export interface FaqContentProps {
@@ -46,6 +51,21 @@ export interface CircleCheckboxProps {
   checked?: boolean;
   onCheckedChange?: (checked: boolean) => void;
   className?: string;
-} 
+}
 
-export type Model = "vif-llama-4-scout" |"vif-llama-4-maverick" | "vif-llama" | "vif-claude" | "vif-qwq" | "vif-qwen" | "vif-r1" | "vif-grok-3" | "vif-optimus-alpha";
+export type Model =
+  | "vif-llama-4-scout"
+  | "vif-llama-4-maverick"
+  | "vif-llama"
+  | "vif-claude"
+  | "vif-qwq"
+  | "vif-qwen"
+  | "vif-r1"
+  | "vif-grok-3"
+  | "vif-optimus-alpha";
+
+export interface SubtaskItem {
+  id: string;
+  text: string;
+  completed: boolean;
+}
